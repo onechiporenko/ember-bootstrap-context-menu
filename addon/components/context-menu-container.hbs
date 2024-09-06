@@ -1,0 +1,9 @@
+{{#if this.settings.componentToRender}}
+  {{component
+    (ensure-safe-component this.settings.componentToRender)
+    settings=this.settings
+    onMenuItemClick=this.onMenuItemClick
+    onCloseMenu=this.onCloseMenu
+  }}
+{{/if}}
+{{yield}}

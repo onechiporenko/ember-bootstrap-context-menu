@@ -1,0 +1,8 @@
+{{#each @items as |item|}}
+  <ContextMenuContainer::DefaultContextMenu::Item
+    @item={{item}}
+    @ddm={{@ddm}}
+    @menuItemClicked={{@menuItemClicked}}
+  />
+{{/each}}
+{{yield}}

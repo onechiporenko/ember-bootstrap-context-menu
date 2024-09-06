@@ -1,0 +1,27 @@
+<@ddm.item class="{{if this.hasSubmenu "dropdown"}}">
+  <li
+    {{did-insert (fn this.addEventListeners this)}}
+    {{will-destroy (fn this.removeEventListeners this)}}
+    class="{{if this.dropstart "dropstart"}} {{if this.dropend "dropend"}}"
+  >
+    <a
+      class="dropdown-item {{if this.hasSubmenu "dropdown-toggle d-flex justify-content-between align-items-center"}} {{@item.class}} {{if @item.disabled "disabled"}}"
+      href="#"
+      {{on "click" (fn @menuItemClicked @item)}}
+    >
+      <span>
+        <ContextMenuContainer::DefaultContextMenu::Items::Title @item={{@item}} />
+      </span>
+    </a>
+    {{#if this.hasSubmenu}}
+      <ul class="dropdown-menu mt-n4 {{if this.dropstart "end-100 me-n2"}} {{if this.dropend "start-100 ms-n2"}} {{if this.hovered "show"}}">
+        <ContextMenuContainer::DefaultContextMenu::List
+          @items={{@item.submenu.items}}
+          @ddm={{@ddm}}
+          @menuItemClicked={{@menuItemClicked}}
+        />
+      </ul>
+    {{/if}}
+  </li>
+</@ddm.item>
+{{yield}}

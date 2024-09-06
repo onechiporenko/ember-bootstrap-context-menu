@@ -1,0 +1,54 @@
+{{page-title "Demo"}}
+<div class="container p-4">
+  <div class="row gx-5">
+    <div class="col">
+      <h1>Ember Bootstrap Context Menu</h1>
+      <div class="alert alert-light pb-0">
+        <pre>ember i ember-bootstrap-context-menu</pre>
+      </div>
+    </div>
+  </div>
+  <div class="row gx-5 text-center">
+    <div {{on "contextmenu" this.showOneLevelContextMenu}} class="col">
+      <div class="p-4 border rounded-2">
+        One level context menu
+      </div>
+    </div>
+    <div {{on "contextmenu" this.showMenuWithIcons}} class="col">
+      <div class="p-4 border rounded-2">
+        Context menu with icons
+      </div>
+    </div>
+    <div {{on "contextmenu" this.showTwoLevelContextMenu}} class="col">
+      <div class="p-4 border rounded-2">
+        Two levels context menu
+      </div>
+    </div>
+    <div {{on "contextmenu" this.showThreeLevelContextMenu}} class="col">
+      <div class="p-4 border rounded-2">
+        Three levels context menu
+      </div>
+    </div>
+    <div {{on "contextmenu" this.showCustomContextMenu}} class="col">
+      <div class="p-4 border rounded-2">
+        Custom context menu
+      </div>
+    </div>
+  </div>
+  <div class="row gx-5">
+    <div class="p-4">
+      <p>Clicked menu items:
+        {{#if this.logs.length}}
+          <BsButton @onClick={{this.clearLogs}} @size="sm" @outline={{true}} @type="danger">
+            <FaIcon @icon="eraser" @fixedWidth={{true}} />
+            <BsTooltip>Clear logs</BsTooltip>
+          </BsButton>
+        {{/if}}
+      </p>
+      <div class="alert alert-secondary">
+        <pre class="mb-0">{{#each this.logs as |log|}}{{log}}<br>{{else}}Right click on any of the boxes above{{/each}}</pre>
+      </div>
+    </div>
+  </div>
+</div>
+{{outlet}}

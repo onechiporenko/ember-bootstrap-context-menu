@@ -1,0 +1,8 @@
+{{#if (eq @item.type "divider")}}
+  <ContextMenuContainer::DefaultContextMenu::Items::Divider @item={{@item}} @ddm={{@ddm}} />
+{{else if (eq @item.type "header")}}
+  <ContextMenuContainer::DefaultContextMenu::Items::Header @item={{@item}} />
+{{else}}
+  <ContextMenuContainer::DefaultContextMenu::Items::Default @item={{@item}} @ddm={{@ddm}} @menuItemClicked={{@menuItemClicked}} />
+{{/if}}
+{{yield}}
