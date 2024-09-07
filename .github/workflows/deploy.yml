@@ -51,6 +51,6 @@ jobs:
         env:
           REPO: self
           BRANCH: gh-pages
-          FOLDER: .
+          FOLDER: ./
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TARGET_DIR: .
+          TARGET_DIR: ./
