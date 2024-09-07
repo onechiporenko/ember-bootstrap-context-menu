@@ -1,11 +1,11 @@
 import Service from '@ember/service';
 
-import ContextMenuContainerDefaultContextMenuItemComponent from '../components/context-menu-container/default-context-menu/item';
 import type { MenuItem } from '../types/menu-item.interface';
 import { findPathToMenuItem } from '../utils/find-path-to-menu-item.function';
+import ContextMenuContainerDefaultContextMenuItemsDefault from '../components/context-menu-container/default-context-menu/items/default';
 
 export default class HoverBridgeService extends Service {
-  protected menuItemComponents: ContextMenuContainerDefaultContextMenuItemComponent[] =
+  protected menuItemComponents: ContextMenuContainerDefaultContextMenuItemsDefault[] =
     [];
   protected menuItems: MenuItem[] = [];
 
@@ -17,14 +17,14 @@ export default class HoverBridgeService extends Service {
     this.menuItems = menuItems;
   }
 
-  sub(item: ContextMenuContainerDefaultContextMenuItemComponent): void {
+  sub(item: ContextMenuContainerDefaultContextMenuItemsDefault): void {
     if (this.menuItemComponents.includes(item)) {
       return;
     }
     this.menuItemComponents.push(item);
   }
 
-  unsub(item: ContextMenuContainerDefaultContextMenuItemComponent): void {
+  unsub(item: ContextMenuContainerDefaultContextMenuItemsDefault): void {
     const index = this.menuItemComponents.indexOf(item);
     if (index === -1) {
       return;
