@@ -45,7 +45,6 @@ jobs:
         uses: actions/download-artifact@v3
       - name: Prepare builds
         run: |
-          rm -rf ./*
           tar -xf build.tar.gz/build.tar.gz
       - name: Deploy to GitHub Pages
         uses: s0/git-publish-subdir-action@develop
