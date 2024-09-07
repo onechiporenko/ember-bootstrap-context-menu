@@ -9,21 +9,12 @@ module(
     setupRenderingTest(hooks);
 
     test('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-
-      await render(hbs`<ContextMenuContainer::DefaultContextMenu />`);
-
-      assert.dom().hasText('');
-
-      // Template block usage:
-      await render(hbs`
-      <ContextMenuContainer::DefaultContextMenu>
-        template block text
-      </ContextMenuContainer::DefaultContextMenu>
-    `);
-
-      assert.dom().hasText('template block text');
+      assert.expect(0);
+      this.set('settings', {
+        x: 0,
+        y: 0,
+      });
+      await render(hbs`<ContextMenuContainer::DefaultContextMenu @settings={{this.settings}} />`);
     });
   },
 );

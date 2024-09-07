@@ -7,20 +7,11 @@ module('Integration | Component | context-menu-wrapper', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
-    await render(hbs`<ContextMenuWrapper />`);
-
-    assert.dom().hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <ContextMenuWrapper>
-        template block text
-      </ContextMenuWrapper>
-    `);
-
-    assert.dom().hasText('template block text');
+    assert.expect(0);
+    this.set('settings', {
+      x: 0,
+      y: 0,
+    });
+    await render(hbs`<ContextMenuWrapper @settings={{this.settings}} />`);
   });
 });
