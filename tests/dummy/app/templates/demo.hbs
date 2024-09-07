@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="row gx-5">
-    <div class="p-4">
+    <div class="ps-4 pe-4 pt-2 pb-2">
       <p>Clicked menu items:
         {{#if this.logs.length}}
           <BsButton @onClick={{this.clearLogs}} @size="sm" @outline={{true}} @type="danger">
@@ -48,6 +48,18 @@
       <div class="alert alert-secondary">
         <pre class="mb-0">{{#each this.logs as |log|}}{{log}}<br>{{else}}Right click on any of the boxes above{{/each}}</pre>
       </div>
+    </div>
+  </div>
+  <div class="row gx-5">
+    <div class="ps-4 pe-4 pt-2 pb-2">
+      <ul>
+        <li>Check <code>MenuItem</code>-interface in the <a
+          href="https://github.com/onechiporenko/ember-bootstrap-context-menu/blob/master/addon/types/menu-item.interface.ts" target="_blank">menu-item.interface.ts</a></li>
+        <li>Check demo source in the <a
+          href="https://github.com/onechiporenko/ember-bootstrap-context-menu/blob/master/tests/dummy/app/controllers/demo.ts" target="_blank">controller</a> and
+          <a
+            href="https://github.com/onechiporenko/ember-bootstrap-context-menu/blob/master/tests/dummy/app/templates/demo.hbs" target="_blank">template</a></li>
+      </ul>
     </div>
   </div>
 </div>
