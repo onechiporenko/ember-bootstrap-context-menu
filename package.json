@@ -139,6 +139,7 @@
     "edition": "octane"
   },
   "ember-addon": {
+    "demoURL": "https://onechiporenko.github.io/ember-bootstrap-context-menu/#/demo",
     "configPath": "tests/dummy/config"
   }
 }
