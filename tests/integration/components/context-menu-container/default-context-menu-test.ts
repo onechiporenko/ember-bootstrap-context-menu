@@ -14,7 +14,9 @@ module(
         x: 0,
         y: 0,
       });
-      await render(hbs`<ContextMenuContainer::DefaultContextMenu @settings={{this.settings}} />`);
+      await render(
+        hbs`<ContextMenuContainer::DefaultContextMenu @settings={{this.settings}} />`,
+      );
     });
   },
 );
