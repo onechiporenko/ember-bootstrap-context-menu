@@ -1,23 +1,20 @@
 <ContextMenuWrapper
   @settings={{@settings}}
   @onMenuItemClick={{@onMenuItemClick}}
-  @onCloseMenu={{@onCloseMenu}} as |dd menuItemClicked|>
-  <dd.menu as |ddm|>
+  @onCloseMenu={{@onCloseMenu}} as |Wrapper|>
+  <Wrapper.Dropdown.menu>
     <div class="input-group ms-2 me-2 flex-nowrap">
-      <BsButton class="text-nowrap" @outline={{true}} @type="primary" @onClick={{fn menuItemClicked this.btn1}}>{{this.btn1.title}}</BsButton>
-      <BsButton class="text-nowrap" @outline={{true}} @type="success" @onClick={{fn menuItemClicked this.btn2}}>{{this.btn2.title}}</BsButton>
-      <BsButton class="text-nowrap" @outline={{true}} @type="info" @onClick={{fn menuItemClicked this.btn3}}>{{this.btn3.title}}</BsButton>
+      <BsButton class="text-nowrap" @outline={{true}} @type="primary" @onClick={{fn Wrapper.menuItemClicked this.btn1}}>{{this.btn1.title}}</BsButton>
+      <BsButton class="text-nowrap" @outline={{true}} @type="success" @onClick={{fn Wrapper.menuItemClicked this.btn2}}>{{this.btn2.title}}</BsButton>
+      <BsButton class="text-nowrap" @outline={{true}} @type="info" @onClick={{fn Wrapper.menuItemClicked this.btn3}}>{{this.btn3.title}}</BsButton>
     </div>
     <p class="pt-2 ps-2 pe-2 mb-0 text-body-secondary">Click on button above</p>
-    <ContextMenuContainer::DefaultContextMenu::List
-      @ddm={{ddm}}
-      @menuItemClicked={{menuItemClicked}}
-      @items={{this.menuItems}} />
+    <Wrapper.ContextMenuList @items={{this.menuItems}} />
     <div class="ms-2 me-2">
-      <BsButton class="w-100" @type="danger" @onClick={{fn menuItemClicked this.btn4}}>
+      <BsButton class="w-100" @type="danger" @onClick={{fn Wrapper.menuItemClicked this.btn4}}>
         <FaIcon @icon="trash-can" @fixedWidth={{true}} />
         {{this.btn4.title}}
       </BsButton>
     </div>
-  </dd.menu>
+  </Wrapper.Dropdown.menu>
 </ContextMenuWrapper>

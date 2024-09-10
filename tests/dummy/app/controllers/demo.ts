@@ -3,7 +3,8 @@ import { action } from '@ember/object';
 import { service } from '@ember/service';
 import type ContextMenuManagerService from 'ember-bootstrap-context-menu/services/context-menu-manager';
 import { tracked } from '@glimmer/tracking';
-import CustomContextMenu from 'dummy/components/custom-context-menu';
+import CustomContextMenu from '../components/custom-context-menu';
+import CustomContextMenuWithIcons from '../components/custom-context-menu-with-icons';
 
 export default class DemoController extends Controller {
   @service declare contextMenuManager: ContextMenuManagerService;
@@ -45,15 +46,19 @@ export default class DemoController extends Controller {
             id: 'header',
             title: 'Menu Items',
             type: 'header',
-            faIcon: { icon: 'sack-dollar', fixedWidth: true },
+            extras: {
+              faIcon: { icon: 'sack-dollar', fixedWidth: true },
+            },
           },
           {
             id: '1',
             title: 'One Level Item 1 with icon',
             type: 'default',
-            faIcon: {
-              icon: 'user',
-              fixedWidth: true,
+            extras: {
+              faIcon: {
+                icon: 'user',
+                fixedWidth: true,
+              },
             },
           },
           {
@@ -61,18 +66,22 @@ export default class DemoController extends Controller {
             title: 'One Level Item 2 with icon',
             type: 'default',
             disabled: true,
-            faIcon: {
-              icon: 'ban',
-              fixedWidth: true,
+            extras: {
+              faIcon: {
+                icon: 'ban',
+                fixedWidth: true,
+              },
             },
           },
           {
             id: '3',
             title: 'One Level Item 3 with icon',
             type: 'default',
-            faIcon: {
-              icon: 'rotate',
-              fixedWidth: true,
+            extras: {
+              faIcon: {
+                icon: 'rotate',
+                fixedWidth: true,
+              },
             },
           },
           { id: 'divider', type: 'divider' },
@@ -81,14 +90,17 @@ export default class DemoController extends Controller {
             title: 'One Level Item 4 with icon',
             type: 'default',
             class: 'text-danger',
-            faIcon: {
-              icon: 'trash',
-              fixedWidth: true,
+            extras: {
+              faIcon: {
+                icon: 'trash',
+                fixedWidth: true,
+              },
             },
           },
         ],
         e.pageX,
         e.pageY,
+        CustomContextMenuWithIcons,
       )
       .then(({ id }) => this.addLog(`One Level with icon: ${id}`));
     e.stopPropagation();
@@ -161,7 +173,37 @@ export default class DemoController extends Controller {
                     items: [
                       { id: '321', title: 'Submenu Item 1', type: 'default' },
                       { id: '322', title: 'Submenu Item 2', type: 'default' },
-                      { id: '323', title: 'Submenu Item 3', type: 'default' },
+                      {
+                        id: '323',
+                        title: 'Submenu Item 3',
+                        type: 'default',
+                        submenu: {
+                          items: [
+                            {
+                              id: '3231',
+                              title: 'Submenu Item 1',
+                              type: 'default',
+                            },
+                            {
+                              id: '3232',
+                              title: 'Submenu Item 2',
+                              type: 'default',
+                            },
+                            {
+                              id: '3233',
+                              title: 'Submenu Item 3',
+                              type: 'default',
+                            },
+                            { id: 'divider', type: 'divider' },
+                            {
+                              id: '3234',
+                              title: 'Submenu Item 4',
+                              type: 'default',
+                              class: 'text-danger',
+                            },
+                          ],
+                        },
+                      },
                       { id: 'divider', type: 'divider' },
                       {
                         id: '324',
@@ -187,7 +229,7 @@ export default class DemoController extends Controller {
   @action
   showCustomContextMenu(e: PointerEvent): void {
     this.contextMenuManager
-      .show(CustomContextMenu, e.pageX, e.pageY)
+      .show([], e.pageX, e.pageY, CustomContextMenu)
       .then(({ id }) => this.addLog(`Custom: ${id}`));
     e.stopPropagation();
     e.preventDefault();

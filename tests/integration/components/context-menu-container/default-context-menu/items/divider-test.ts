@@ -8,24 +8,18 @@ module(
   function (hooks) {
     setupRenderingTest(hooks);
 
-    test('it renders', async function (assert) {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.set('myAction', function(val) { ... });
-
+    test('attributes', async function (assert) {
+      this.set('item', {
+        id: '1',
+        type: 'divider',
+        title: 'One',
+        class: 'cls2',
+      });
       await render(
-        hbs`<ContextMenuContainer::DefaultContextMenu::Items::Divider />`,
+        hbs`<ContextMenuContainer::DefaultContextMenu::Items::Divider class="cls1" @item={{this.item}} />`,
       );
-
-      assert.dom().hasText('');
-
-      // Template block usage:
-      await render(hbs`
-      <ContextMenuContainer::DefaultContextMenu::Items::Divider>
-        template block text
-      </ContextMenuContainer::DefaultContextMenu::Items::Divider>
-    `);
-
-      assert.dom().hasText('template block text');
+      assert.ok(this.element.querySelector('li')?.classList.contains('cls1'));
+      assert.ok(this.element.querySelector('li')?.classList.contains('cls2'));
     });
   },
 );

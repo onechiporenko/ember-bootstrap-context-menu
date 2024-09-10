@@ -1,8 +1,20 @@
-{{#each @items as |item|}}
-  <ContextMenuContainer::DefaultContextMenu::Item
-    @item={{item}}
-    @ddm={{@ddm}}
-    @menuItemClicked={{@menuItemClicked}}
-  />
-{{/each}}
-{{yield}}
+{{#let
+  (hash
+    Default=(component "context-menu-container/default-context-menu/items/default" menuItemClicked=@menuItemClicked)
+    Divider=(component "context-menu-container/default-context-menu/items/divider")
+    Header=(component "context-menu-container/default-context-menu/items/header")
+  ) as |MenuItems|}}
+  {{#if (has-block)}}
+    {{yield MenuItems}}
+  {{else}}
+    {{#each @items as |item|}}
+      {{#if (eq item.type "divider")}}
+        <MenuItems.Divider @item={{item}} />
+      {{else if (eq item.type "header")}}
+        <MenuItems.Header @item={{item}} />
+      {{else}}
+        <MenuItems.Default @item={{item}} />
+      {{/if}}
+    {{/each}}
+  {{/if}}
+{{/let}}

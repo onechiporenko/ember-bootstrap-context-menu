@@ -4,7 +4,7 @@ import type { MenuItem } from '../../../types/menu-item.interface';
 interface ContextMenuContainerDefaultContextMenuListSignature {
   // The arguments accepted by the component
   Args: {
-    ddm: Component;
+    ddMenu: Component;
     items: MenuItem[];
     menuItemClicked: (menuItem: MenuItem, e: Event) => void;
   };

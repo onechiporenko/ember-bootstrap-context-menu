@@ -9,27 +9,27 @@
     </div>
   </div>
   <div class="row gx-5 text-center">
-    <div {{on "contextmenu" this.showOneLevelContextMenu}} class="col">
+    <div {{on "contextmenu" this.showOneLevelContextMenu}} id="menu-one-level" class="col">
       <div class="p-4 border rounded-2">
         One level context menu
       </div>
     </div>
-    <div {{on "contextmenu" this.showMenuWithIcons}} class="col">
-      <div class="p-4 border rounded-2">
-        Context menu with icons
-      </div>
-    </div>
-    <div {{on "contextmenu" this.showTwoLevelContextMenu}} class="col">
+    <div {{on "contextmenu" this.showTwoLevelContextMenu}} id="menu-two-levels" class="col">
       <div class="p-4 border rounded-2">
         Two levels context menu
       </div>
     </div>
-    <div {{on "contextmenu" this.showThreeLevelContextMenu}} class="col">
+    <div {{on "contextmenu" this.showThreeLevelContextMenu}} id="menu-many-levels" class="col">
       <div class="p-4 border rounded-2">
-        Three levels context menu
+        Many levels context menu
       </div>
     </div>
-    <div {{on "contextmenu" this.showCustomContextMenu}} class="col">
+    <div {{on "contextmenu" this.showMenuWithIcons}} id="menu-with-fa-icons" class="col">
+      <div class="p-4 border rounded-2">
+        Custom context menu with icons
+      </div>
+    </div>
+    <div {{on "contextmenu" this.showCustomContextMenu}} id="menu-custom" class="col">
       <div class="p-4 border rounded-2">
         Custom context menu
       </div>
@@ -38,12 +38,10 @@
   <div class="row gx-5">
     <div class="ps-4 pe-4 pt-2 pb-2">
       <p>Clicked menu items:
-        {{#if this.logs.length}}
-          <BsButton @onClick={{this.clearLogs}} @size="sm" @outline={{true}} @type="danger">
-            <FaIcon @icon="eraser" @fixedWidth={{true}} />
-            <BsTooltip>Clear logs</BsTooltip>
-          </BsButton>
-        {{/if}}
+        <BsButton disabled={{not this.logs.length}} @onClick={{this.clearLogs}} @size="sm" @outline={{true}} @type="danger">
+          <FaIcon @icon="eraser" @fixedWidth={{true}} />
+          <BsTooltip>Clear logs</BsTooltip>
+        </BsButton>
       </p>
       <div class="alert alert-secondary">
         <pre class="mb-0">{{#each this.logs as |log|}}{{log}}<br>{{else}}Right click on any of the boxes above{{/each}}</pre>

@@ -19,25 +19,18 @@ export default class ContextMenuManagerService extends Service {
   protected declare contextMenuDeferred: RSVP.Deferred<MenuItem>;
 
   show(
-    menuItemsOrComponent: MenuItem[] | MenuComponent,
+    menuItems: MenuItem[],
     x: number,
     y: number,
+    componentToRender?: MenuComponent,
   ): Promise<MenuItem> {
-    if (Array.isArray(menuItemsOrComponent)) {
-      this.settings = {
-        x,
-        y,
-        menuItems: menuItemsOrComponent,
-        componentToRender: ContextMenuContainerDefaultContextMenuComponent,
-      };
-    } else {
-      this.settings = {
-        x,
-        y,
-        componentToRender: menuItemsOrComponent,
-        menuItems: [],
-      };
-    }
+    this.settings = {
+      x,
+      y,
+      componentToRender:
+        componentToRender ?? ContextMenuContainerDefaultContextMenuComponent,
+      menuItems,
+    };
     this.contextMenuDeferred = defer();
     this.hoverBridge.setMenuItems(this.settings.menuItems);
     return this.contextMenuDeferred.promise;

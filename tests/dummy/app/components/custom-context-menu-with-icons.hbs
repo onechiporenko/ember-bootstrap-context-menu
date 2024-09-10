@@ -1,0 +1,39 @@
+<ContextMenuWrapper
+  @settings={{@settings}}
+  @onMenuItemClick={{@onMenuItemClick}}
+  @onCloseMenu={{@onCloseMenu}} as |Wrapper|>
+  <Wrapper.Dropdown.menu>
+    <Wrapper.ContextMenuList as |MenuItems|>
+      {{#each @settings.menuItems as |item|}}
+        {{#if (eq item.type "divider")}}
+          <MenuItems.Divider @item={{item}} />
+        {{else if (eq item.type "header")}}
+          <MenuItems.Header @item={{item}} />
+        {{else}}
+          <MenuItems.Default @item={{item}} as |DefaultMenuItem|>
+            <DefaultMenuItem.Link>
+              {{#if item.extras.faIcon}}
+                <FaIcon @icon={{item.extras.faIcon.icon}} @fixedWidth={{item.extras.faIcon.fixedWidth}} />
+              {{/if}}
+              {{item.title}}
+            </DefaultMenuItem.Link>
+            {{#if DefaultMenuItem.hasSubmenu}}
+              <DefaultMenuItem.List />
+            {{/if}}
+          </MenuItems.Default>
+        {{/if}}
+      {{/each}}
+    </Wrapper.ContextMenuList>
+  </Wrapper.Dropdown.menu>
+</ContextMenuWrapper>
+{{yield}}
+
+
+
+
+
+
+
+
+
+

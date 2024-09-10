@@ -6,4 +6,9 @@ module.exports = {
   options: {
     'ember-cli-babel': { enableTypeScriptTransform: true },
   },
+
+  included() {
+    this._super.included.apply(this, arguments);
+    this.import('vendor/ember-bootstrap-context-menu/carets.css');
+  },
 };

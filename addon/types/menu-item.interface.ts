@@ -1,4 +1,7 @@
-export interface MenuItemBase<T extends string> {
+export interface MenuItemBase<
+  T extends string,
+  E extends Record<string, unknown> = Record<string, unknown>,
+> {
   id: string;
   class?: string;
   disabled?: boolean;
@@ -7,31 +10,17 @@ export interface MenuItemBase<T extends string> {
     position?: 'start' | 'end'; // default: 'end'
     items: MenuItem[];
   };
-}
-
-export interface MenuItemFaIcon {
-  icon: string;
-  prefix?: string;
-  size?: string;
-  rotation?: string;
-  flip?: string;
-  spin?: boolean;
-  transform?: string;
-  mask?: string;
-  symbol?: string;
-  fixedWidth?: boolean;
+  extras?: E;
 }
 
 export interface MenuItemDivider extends MenuItemBase<'divider'> {}
 
 export interface MenuItemHeader extends MenuItemBase<'header'> {
   title: string;
-  faIcon?: MenuItemFaIcon;
 }
 
 export interface MenuItemDefault extends MenuItemBase<'default'> {
   title: string;
-  faIcon?: MenuItemFaIcon;
 }
 
 export type MenuItem = MenuItemDivider | MenuItemHeader | MenuItemDefault;

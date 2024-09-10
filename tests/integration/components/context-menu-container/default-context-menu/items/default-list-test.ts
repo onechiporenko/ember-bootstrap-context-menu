@@ -1,0 +1,59 @@
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'dummy/tests/helpers';
+import { render } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
+
+module(
+  'Integration | Component | context-menu-container/default-context-menu/items/default-list',
+  function (hooks) {
+    setupRenderingTest(hooks);
+
+    test('attributes', async function (assert) {
+      this.set('item', {
+        id: '1',
+        type: 'default',
+        title: 'One',
+        class: 'cls2',
+        submenu: {
+          items: [
+            {
+              id: '11',
+              type: 'default',
+              title: 'One one',
+            },
+          ],
+        },
+      });
+      await render(
+        hbs`<ContextMenuContainer::DefaultContextMenu::Items::DefaultList @item={{this.item}} class="cls1" />`,
+      );
+      assert.ok(this.element.querySelector('ul')?.classList.contains('cls1'));
+      assert.ok(this.element.querySelector('ul')?.classList.contains('cls2'));
+    });
+
+    test('attributes [block]', async function (assert) {
+      this.set('item', {
+        id: '1',
+        type: 'default',
+        title: 'One',
+        class: 'cls2',
+        submenu: {
+          items: [
+            {
+              id: '11',
+              type: 'default',
+              title: 'One one',
+            },
+          ],
+        },
+      });
+      await render(hbs`
+        <ContextMenuContainer::DefaultContextMenu::Items::DefaultList @item={{this.item}} class="cls1">
+          template block text
+        </ContextMenuContainer::DefaultContextMenu::Items::DefaultList>
+      `);
+      assert.ok(this.element.querySelector('ul')?.classList.contains('cls1'));
+      assert.ok(this.element.querySelector('ul')?.classList.contains('cls2'));
+    });
+  },
+);

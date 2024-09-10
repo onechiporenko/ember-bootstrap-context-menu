@@ -1,12 +1,10 @@
 <ContextMenuWrapper
+  ...attributes
   @settings={{@settings}}
   @onMenuItemClick={{@onMenuItemClick}}
-  @onCloseMenu={{@onCloseMenu}} as |dd menuItemClicked|>
-  <dd.menu as |ddm|>
-    <ContextMenuContainer::DefaultContextMenu::List
-      @ddm={{ddm}}
-      @menuItemClicked={{menuItemClicked}}
-      @items={{@settings.menuItems}} />
-  </dd.menu>
+  @onCloseMenu={{@onCloseMenu}} as |Wrapper|>
+  <Wrapper.Dropdown.menu>
+    <Wrapper.ContextMenuList />
+  </Wrapper.Dropdown.menu>
 </ContextMenuWrapper>
 {{yield}}

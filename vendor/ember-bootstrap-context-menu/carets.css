@@ -1,0 +1,29 @@
+/* fix for multilevel dropdown carets */
+.context-menu-wrapper .dropend > .dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0;
+  content: "";
+  border-top: 0.3em solid transparent;
+  border-right: 0;
+  border-bottom: 0.3em solid transparent;
+  border-left: 0.3em solid;
+}
+
+.context-menu-wrapper .dropend > .dropdown-toggle::before {
+  content: none;
+}
+
+.context-menu-wrapper .dropstart > .dropdown-toggle::before {
+  display: inline-block;
+  margin-right: 0.255em;
+  vertical-align: 0;
+  content: "";
+  border-top: 0.3em solid transparent;
+  border-right: 0.3em solid;
+  border-bottom: 0.3em solid transparent;
+}
+
+.context-menu-wrapper .dropstart > .dropdown-toggle::after {
+  content: none;
+}

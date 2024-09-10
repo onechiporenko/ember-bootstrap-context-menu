@@ -18,7 +18,7 @@ export interface ContextMenuContainerDefaultContextMenuItemsDefaultSignature {
     default: [];
   };
   // The element to which `...attributes` is applied in the component template
-  Element: null;
+  Element: HTMLLIElement;
 }
 
 export default class ContextMenuContainerDefaultContextMenuItemsDefault extends Component<ContextMenuContainerDefaultContextMenuItemsDefaultSignature> {
@@ -32,17 +32,6 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
 
   get hasSubmenu(): boolean {
     return !!this.args.item.submenu?.items?.length;
-  }
-
-  get dropstart(): boolean {
-    return this.args.item.submenu?.position === 'start';
-  }
-
-  get dropend(): boolean {
-    return (
-      this.args.item.submenu?.position === 'end' ||
-      this.args.item.submenu?.position === undefined
-    );
   }
 
   @action
