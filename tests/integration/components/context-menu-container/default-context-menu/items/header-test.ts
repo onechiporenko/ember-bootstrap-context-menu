@@ -18,8 +18,8 @@ module(
       await render(
         hbs`<ContextMenuContainer::DefaultContextMenu::Items::Header class="cls1" @item={{this.item}} />`,
       );
-      assert.ok(this.element.querySelector('h6')?.classList.contains('cls1'));
-      assert.ok(this.element.querySelector('h6')?.classList.contains('cls2'));
+      assert.dom('h6').hasClass('cls1');
+      assert.dom('h6').hasClass('cls2');
     });
   },
 );

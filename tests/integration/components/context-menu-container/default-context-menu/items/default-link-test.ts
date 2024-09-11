@@ -24,10 +24,7 @@ module(
           @menuItemClicked={{this.handler}}
         />`,
       );
-      assert.strictEqual(
-        this.element.querySelector('a')?.textContent?.trim(),
-        'One',
-      );
+      assert.dom('a').hasText('One');
       await click('a');
     });
 
@@ -45,8 +42,8 @@ module(
           @item={{this.item}}
         />`,
       );
-      assert.ok(this.element.querySelector('a')?.classList.contains('cls1'));
-      assert.ok(this.element.querySelector('a')?.classList.contains('cls2'));
+      assert.dom('a').hasClass('cls1');
+      assert.dom('a').hasClass('cls2');
     });
 
     test('it renders [block]', async function (assert) {
@@ -55,10 +52,7 @@ module(
         ONEONEONE
       </ContextMenuContainer::DefaultContextMenu::Items::DefaultLink>
     `);
-      assert.strictEqual(
-        this.element.querySelector('a')?.textContent?.trim(),
-        'ONEONEONE',
-      );
+      assert.dom('a').hasText('ONEONEONE');
       await click('a');
     });
 
@@ -72,9 +66,7 @@ module(
       await render(
         hbs`<ContextMenuContainer::DefaultContextMenu::Items::DefaultLink @item={{this.item}} />`,
       );
-      assert.ok(
-        this.element.querySelector('a')?.classList.contains('disabled'),
-      );
+      assert.dom('a').hasClass('disabled');
     });
 
     test('disabled [block]', async function (assert) {
@@ -88,9 +80,7 @@ module(
         <ContextMenuContainer::DefaultContextMenu::Items::DefaultLink @item={{this.item}}>
           text
         </ContextMenuContainer::DefaultContextMenu::Items::DefaultLink>`);
-      assert.ok(
-        this.element.querySelector('a')?.classList.contains('disabled'),
-      );
+      assert.dom('a').hasClass('disabled');
     });
   },
 );

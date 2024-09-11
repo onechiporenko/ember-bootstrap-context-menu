@@ -27,8 +27,8 @@ module(
       await render(
         hbs`<ContextMenuContainer::DefaultContextMenu::Items::DefaultList @item={{this.item}} class="cls1" />`,
       );
-      assert.ok(this.element.querySelector('ul')?.classList.contains('cls1'));
-      assert.ok(this.element.querySelector('ul')?.classList.contains('cls2'));
+      assert.dom('ul').hasClass('cls1');
+      assert.dom('ul').hasClass('cls2');
     });
 
     test('attributes [block]', async function (assert) {
@@ -52,8 +52,8 @@ module(
           template block text
         </ContextMenuContainer::DefaultContextMenu::Items::DefaultList>
       `);
-      assert.ok(this.element.querySelector('ul')?.classList.contains('cls1'));
-      assert.ok(this.element.querySelector('ul')?.classList.contains('cls2'));
+      assert.dom('ul').hasClass('cls1');
+      assert.dom('ul').hasClass('cls2');
     });
   },
 );
