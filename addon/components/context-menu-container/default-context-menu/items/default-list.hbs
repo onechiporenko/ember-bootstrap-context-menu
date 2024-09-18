@@ -1,11 +1,10 @@
 <ul ...attributes class="dropdown-menu mt-n4 {{@item.class}} {{if (dropstart @item) "end-100 me-n2"}} {{if (dropend @item) "start-100 ms-n2"}} {{if @hovered "show"}}">
-  {{#let (component "context-menu-container/default-context-menu/list") as |DefaultContextMenuList|}}
+  {{#let (component "context-menu-container/default-context-menu/list" menuItemClicked=@menuItemClicked) as |DefaultContextMenuList|}}
     {{#if (has-block)}}
       {{yield DefaultContextMenuList}}
     {{else}}
       <DefaultContextMenuList
         @items={{@item.submenu.items}}
-        @menuItemClicked={{@menuItemClicked}}
       />
     {{/if}}
   {{/let}}

@@ -83,6 +83,21 @@ export default class DemoController extends Controller {
                 fixedWidth: true,
               },
             },
+            submenu: {
+              items: [
+                {
+                  id: '31',
+                  title: 'Submenu Item 1',
+                  type: 'default',
+                  extras: {
+                    faIcon: {
+                      icon: 'pen',
+                      fixedWidth: true,
+                    },
+                  },
+                },
+              ],
+            },
           },
           { id: 'divider', type: 'divider' },
           {

@@ -18,7 +18,20 @@
               {{item.title}}
             </DefaultMenuItem.Link>
             {{#if DefaultMenuItem.hasSubmenu}}
-              <DefaultMenuItem.List />
+              <DefaultMenuItem.List as |DefaultMenuItemList|>
+                <DefaultMenuItemList as |MenuItems|>
+                  {{#each item.submenu.items as |subitem|}}
+                    <MenuItems.Default @item={{subitem}} as |DefaultMenuSubItem|>
+                      <DefaultMenuSubItem.Link>
+                        {{#if subitem.extras.faIcon}}
+                          <FaIcon @icon={{subitem.extras.faIcon.icon}} @fixedWidth={{subitem.extras.faIcon.fixedWidth}} />
+                        {{/if}}
+                        {{subitem.title}}
+                      </DefaultMenuSubItem.Link>
+                    </MenuItems.Default>
+                  {{/each}}
+                </DefaultMenuItemList>
+              </DefaultMenuItem.List>
             {{/if}}
           </MenuItems.Default>
         {{/if}}
