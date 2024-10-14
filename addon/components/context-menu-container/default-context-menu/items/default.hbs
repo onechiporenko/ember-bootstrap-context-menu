@@ -1,7 +1,6 @@
 <li
   ...attributes
-  {{did-insert (fn this.addEventListeners this)}}
-  {{will-destroy (fn this.removeEventListeners this)}}
+  {{this.listenMouseHoverEvents}}
   class="{{if (dropstart @item) "dropstart"}} {{if (dropend @item) "dropend"}} {{@item.class}}"
 >
   {{#let (hash

@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
 import { htmlSafe } from '@ember/template';
 import { action } from '@ember/object';
-import { next } from '@ember/runloop';
 import type { MenuItem } from 'ember-bootstrap-context-menu/types/menu-item.interface';
 import type { MenuSettings } from '../types/menu-settings.interface';
+import { runTask } from 'ember-lifeline';
 
 export interface ContextMenuWrapperSignature {
   // The arguments accepted by the component
@@ -44,7 +44,7 @@ export default class ContextMenuWrapper extends Component<ContextMenuWrapperSign
   @action
   storeDropdownApi(dropdownApi: DropdownApi): void {
     this.dropdownApiCloseDropdown = dropdownApi.closeDropdown;
-    next(() => dropdownApi.openDropdown());
+    runTask(this, () => dropdownApi.openDropdown(), 1);
   }
 
   @action

@@ -2,10 +2,11 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { service } from '@ember/service';
 import HoverBridgeService from '../../../../services/hover-bridge';
-import type { EmberRunTimer } from '@ember/runloop/types';
 import { action } from '@ember/object';
-import { cancel, later } from '@ember/runloop';
 import type { MenuItem } from '../../../../types/menu-item.interface';
+import { cancelTask, runTask } from 'ember-lifeline';
+import type { EmberRunTimer } from '@ember/runloop/types';
+import { modifier } from 'ember-modifier';
 
 export interface ContextMenuContainerDefaultContextMenuItemsDefaultSignature {
   // The arguments accepted by the component
@@ -28,7 +29,18 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
   @service
   declare hoverBridge: HoverBridgeService;
 
-  hoverTimer?: EmberRunTimer;
+  declare hoverTimer: EmberRunTimer | number;
+
+  listenMouseHoverEvents = modifier((element: HTMLElement) => {
+    this.hoverBridge.sub(this);
+    element.addEventListener('mouseenter', this.mouseEnter);
+    element.addEventListener('mouseleave', this.mouseLeave);
+    return () => {
+      this.hoverBridge.unsub(this);
+      element.removeEventListener('mouseenter', this.mouseEnter);
+      element.removeEventListener('mouseleave', this.mouseLeave);
+    };
+  });
 
   get hasSubmenu(): boolean {
     return !!this.args.item.submenu?.items?.length;
@@ -41,7 +53,7 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
     }
     this.hovered = true;
     this.hoverBridge.setHovered(this.args.item.id);
-    cancel(this.hoverTimer);
+    cancelTask(this, this.hoverTimer as EmberRunTimer);
   }
 
   @action
@@ -49,7 +61,7 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
     if (this.args.item.type !== 'default') {
       return;
     }
-    this.hoverTimer = later(() => (this.hovered = false), 300);
+    this.hoverTimer = runTask(this, () => (this.hovered = false), 300);
   }
 
   @action
@@ -74,7 +86,7 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
 
   forceMouseLeaveIfNeeded(ids: string[]): void {
     if (!ids.includes(this.args.item.id)) {
-      cancel(this.hoverTimer);
+      cancelTask(this, this.hoverTimer as EmberRunTimer);
       this.hovered = false;
     }
   }

@@ -13,4 +13,5 @@ export interface CustomContextMenuWithIconsSignature {
   Element: null;
 }
 
+// eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class CustomContextMenuWithIcons extends Component<CustomContextMenuWithIconsSignature> {}

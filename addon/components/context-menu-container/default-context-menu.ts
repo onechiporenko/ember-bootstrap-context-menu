@@ -17,4 +17,5 @@ interface ContextMenuContainerDefaultContextMenuSignature {
   Element: HTMLDivElement;
 }
 
+// eslint-disable-next-line ember/no-empty-glimmer-component-classes
 export default class ContextMenuContainerDefaultContextMenuComponent extends Component<ContextMenuContainerDefaultContextMenuSignature> {}
