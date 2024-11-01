@@ -32,6 +32,9 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
   declare hoverTimer: EmberRunTimer | number;
 
   listenMouseHoverEvents = modifier((element: HTMLElement) => {
+    if (this.args.item.disabled) {
+      return;
+    }
     this.hoverBridge.sub(this);
     element.addEventListener('mouseenter', this.mouseEnter);
     element.addEventListener('mouseleave', this.mouseLeave);
