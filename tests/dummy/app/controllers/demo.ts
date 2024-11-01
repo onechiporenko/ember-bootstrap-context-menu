@@ -158,6 +158,26 @@ export default class DemoController extends Controller {
               ],
             },
           },
+          {
+            id: '4',
+            title: 'Two Levels Item 4',
+            type: 'default',
+            disabled: true,
+            submenu: {
+              items: [
+                { id: '31', title: 'Submenu Item 1', type: 'default' },
+                { id: '32', title: 'Submenu Item 2', type: 'default' },
+                { id: '33', title: 'Submenu Item 3', type: 'default' },
+                { id: 'divider', type: 'divider' },
+                {
+                  id: '34',
+                  title: 'Submenu Item 4',
+                  type: 'default',
+                  class: 'text-danger',
+                },
+              ],
+            },
+          },
         ],
         e.pageX,
         e.pageY,
