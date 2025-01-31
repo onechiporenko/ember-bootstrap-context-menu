@@ -1,12 +1,13 @@
+import { action } from '@ember/object';
+import type { EmberRunTimer } from '@ember/runloop/types';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { service } from '@ember/service';
-import HoverBridgeService from '../../../../services/hover-bridge';
-import { action } from '@ember/object';
-import type { MenuItem } from '../../../../types/menu-item.interface';
 import { cancelTask, runTask } from 'ember-lifeline';
-import type { EmberRunTimer } from '@ember/runloop/types';
 import { modifier } from 'ember-modifier';
+
+import HoverBridgeService from '../../../../services/hover-bridge';
+import type { MenuItem } from '../../../../types/menu-item.interface';
 
 export interface ContextMenuContainerDefaultContextMenuItemsDefaultSignature {
   // The arguments accepted by the component

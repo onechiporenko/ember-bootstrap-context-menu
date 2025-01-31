@@ -1,6 +1,7 @@
-import Component from '@glimmer/component';
-import type { MenuItem } from '../../../../types/menu-item.interface';
 import { action } from '@ember/object';
+import Component from '@glimmer/component';
+
+import type { MenuItem } from '../../../../types/menu-item.interface';
 
 export interface ContextMenuContainerDefaultContextMenuItemsDefaultLinkSignature {
   // The arguments accepted by the component

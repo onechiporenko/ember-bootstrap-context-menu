@@ -1,7 +1,5 @@
-export interface MenuItemBase<
-  T extends string,
-  E extends Record<string, unknown> = Record<string, unknown>,
-> {
+export type Extras = Record<string, unknown>;
+export interface MenuItemBase<T extends string, E extends Extras = Extras> {
   id: string;
   class?: string;
   disabled?: boolean;
@@ -13,13 +11,17 @@ export interface MenuItemBase<
   extras?: E;
 }
 
-export interface MenuItemDivider extends MenuItemBase<'divider'> {}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type -- some props are set via generic types
+export interface MenuItemDivider<E extends Extras = Extras>
+  extends MenuItemBase<'divider', E> {}
 
-export interface MenuItemHeader extends MenuItemBase<'header'> {
+export interface MenuItemHeader<E extends Extras = Extras>
+  extends MenuItemBase<'header', E> {
   title: string;
 }
 
-export interface MenuItemDefault extends MenuItemBase<'default'> {
+export interface MenuItemDefault<E extends Extras = Extras>
+  extends MenuItemBase<'default', E> {
   title: string;
 }
 

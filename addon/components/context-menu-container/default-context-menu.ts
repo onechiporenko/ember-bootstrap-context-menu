@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
-import type { MenuSettings } from '../../types/menu-settings.interface';
+
 import type { MenuItem } from '../../types/menu-item.interface';
+import type { MenuSettings } from '../../types/menu-settings.interface';
 
 interface ContextMenuContainerDefaultContextMenuSignature {
   // The arguments accepted by the component

@@ -3,20 +3,19 @@ import { tracked } from '@glimmer/tracking';
 import RSVP, { defer } from 'rsvp';
 
 import ContextMenuContainerDefaultContextMenuComponent from '../components/context-menu-container/default-context-menu';
-
-import HoverBridgeService from './hover-bridge';
+import type { MenuItem } from '../types/menu-item.interface';
 import type {
   MenuComponent,
   MenuSettings,
 } from '../types/menu-settings.interface';
-import type { MenuItem } from '../types/menu-item.interface';
+import HoverBridgeService from './hover-bridge';
 
 export default class ContextMenuManagerService extends Service {
   @service
   declare hoverBridge: HoverBridgeService;
   @tracked
   declare settings: MenuSettings;
-  protected declare contextMenuDeferred: RSVP.Deferred<MenuItem>;
+  declare protected contextMenuDeferred: RSVP.Deferred<MenuItem>;
 
   show(
     menuItems: MenuItem[],

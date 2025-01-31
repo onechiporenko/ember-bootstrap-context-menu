@@ -1,8 +1,8 @@
 import Service from '@ember/service';
 
+import ContextMenuContainerDefaultContextMenuItemsDefault from '../components/context-menu-container/default-context-menu/items/default';
 import type { MenuItem } from '../types/menu-item.interface';
 import { findPathToMenuItem } from '../utils/find-path-to-menu-item.function';
-import ContextMenuContainerDefaultContextMenuItemsDefault from '../components/context-menu-container/default-context-menu/items/default';
 
 export default class HoverBridgeService extends Service {
   protected menuItemComponents: ContextMenuContainerDefaultContextMenuItemsDefault[] =
