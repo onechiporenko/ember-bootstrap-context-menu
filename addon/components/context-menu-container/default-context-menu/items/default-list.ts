@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+
 import type { MenuItem } from '../../../../types/menu-item.interface';
 
 export interface ContextMenuContainerDefaultContextMenuItemsDefaultListSignature {

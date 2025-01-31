@@ -1,5 +1,5 @@
-import { module, test } from 'qunit';
 import { setupTest } from 'dummy/tests/helpers';
+import { module, test } from 'qunit';
 
 module('Unit | Service | context-menu-manager', function (hooks) {
   setupTest(hooks);

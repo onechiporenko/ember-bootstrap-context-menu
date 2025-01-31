@@ -1,8 +1,9 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
-import type ContextMenuManagerService from 'ember-bootstrap-context-menu/services/context-menu-manager';
 import { tracked } from '@glimmer/tracking';
+import type ContextMenuManagerService from 'ember-bootstrap-context-menu/services/context-menu-manager';
+
 import CustomContextMenu from '../components/custom-context-menu';
 import CustomContextMenuWithIcons from '../components/custom-context-menu-with-icons';
 

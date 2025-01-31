@@ -1,9 +1,10 @@
-import Component from '@glimmer/component';
-import { htmlSafe } from '@ember/template';
 import { action } from '@ember/object';
+import { htmlSafe } from '@ember/template';
+import Component from '@glimmer/component';
 import type { MenuItem } from 'ember-bootstrap-context-menu/types/menu-item.interface';
-import type { MenuSettings } from '../types/menu-settings.interface';
 import { runTask } from 'ember-lifeline';
+
+import type { MenuSettings } from '../types/menu-settings.interface';
 
 export interface ContextMenuWrapperSignature {
   // The arguments accepted by the component

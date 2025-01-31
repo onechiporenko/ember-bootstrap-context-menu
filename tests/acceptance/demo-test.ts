@@ -1,6 +1,6 @@
-import { module, test } from 'qunit';
 import { triggerEvent, visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'dummy/tests/helpers';
+import { module, test } from 'qunit';
 
 module('Acceptance | demo', function (hooks) {
   setupApplicationTest(hooks);

@@ -3,11 +3,12 @@ import { service } from '@ember/service';
 import Component from '@glimmer/component';
 
 import ContextMenuManagerService from '../services/context-menu-manager';
-import type { MenuSettings } from '../types/menu-settings.interface';
 import type { MenuItem } from '../types/menu-item.interface';
+import type { MenuSettings } from '../types/menu-settings.interface';
 
 interface ContextMenuContainerSignature {
   // The arguments accepted by the component
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- communication is done via service
   Args: {
     // no arguments here
   };
