@@ -61,7 +61,7 @@
   "devDependencies": {
     "@ember/optional-features": "^2.2.0",
     "@ember/string": "^4.0.0",
-    "@ember/test-helpers": "^4.0.5",
+    "@ember/test-helpers": "^5.0.0",
     "@embroider/test-setup": "^4.0.0",
     "@eslint/js": "^9.19.0",
     "@fortawesome/ember-fontawesome": "^2.0.0",
