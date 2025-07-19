@@ -1,15 +1,30 @@
 {{! template-lint-disable no-at-ember-render-modifiers }}
-<div role="button" class="default-context-menu-overlay" style={{this.overlayStyles}} {{on "click" this.closeDropdown}}></div>
-<BsDropdown class="context-menu-wrapper" style={{this.styles}} ...attributes @onHide={{@onCloseMenu}} as |dd|>
+<div
+  role="button"
+  class="default-context-menu-overlay"
+  style={{this.overlayStyles}}
+  {{on "click" this.closeDropdown}}
+></div>
+<BsDropdown
+  class="context-menu-wrapper"
+  style={{this.styles}}
+  ...attributes
+  @onHide={{@onCloseMenu}}
+  as |dd|
+>
   <span {{did-insert (fn this.storeDropdownApi dd)}}></span>
-  {{#let (hash
-     Dropdown=dd
-     ContextMenuList=(component "context-menu-container/default-context-menu/list"
-       menuItemClicked=this.menuItemClicked
-       items=@settings.menuItems
-     )
-     menuItemClicked=this.menuItemClicked
-   ) as |Wrapper|}}
+  {{#let
+    (hash
+      Dropdown=dd
+      ContextMenuList=(component
+        "context-menu-container/default-context-menu/list"
+        menuItemClicked=this.menuItemClicked
+        items=@settings.menuItems
+      )
+      menuItemClicked=this.menuItemClicked
+    )
+    as |Wrapper|
+  }}
     {{#if (has-block)}}
       {{yield Wrapper}}
     {{else}}

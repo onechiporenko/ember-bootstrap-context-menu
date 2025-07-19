@@ -1,9 +1,18 @@
 {{#let
   (hash
-    Default=(component "context-menu-container/default-context-menu/items/default" menuItemClicked=@menuItemClicked)
-    Divider=(component "context-menu-container/default-context-menu/items/divider")
-    Header=(component "context-menu-container/default-context-menu/items/header")
-  ) as |MenuItems|}}
+    Default=(component
+      "context-menu-container/default-context-menu/items/default"
+      menuItemClicked=@menuItemClicked
+    )
+    Divider=(component
+      "context-menu-container/default-context-menu/items/divider"
+    )
+    Header=(component
+      "context-menu-container/default-context-menu/items/header"
+    )
+  )
+  as |MenuItems|
+}}
   {{#if (has-block)}}
     {{yield MenuItems}}
   {{else}}

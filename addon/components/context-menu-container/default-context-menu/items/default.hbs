@@ -1,13 +1,27 @@
 <li
   ...attributes
   {{this.listenMouseHoverEvents}}
-  class="{{if (dropstart @item) "dropstart"}} {{if (dropend @item) "dropend"}} {{@item.class}}"
+  class="{{if (dropstart @item) 'dropstart'}}
+    {{if (dropend @item) 'dropend'}}
+    {{@item.class}}"
 >
-  {{#let (hash
-    Link=(component "context-menu-container/default-context-menu/items/default-link" item=@item menuItemClicked=@menuItemClicked)
-    List=(component "context-menu-container/default-context-menu/items/default-list" item=@item menuItemClicked=@menuItemClicked hovered=this.hovered)
-    hasSubmenu=this.hasSubmenu
-   ) as |DefaultMenuItem|}}
+  {{#let
+    (hash
+      Link=(component
+        "context-menu-container/default-context-menu/items/default-link"
+        item=@item
+        menuItemClicked=@menuItemClicked
+      )
+      List=(component
+        "context-menu-container/default-context-menu/items/default-list"
+        item=@item
+        menuItemClicked=@menuItemClicked
+        hovered=this.hovered
+      )
+      hasSubmenu=this.hasSubmenu
+    )
+    as |DefaultMenuItem|
+  }}
     {{#if (has-block)}}
       {{yield DefaultMenuItem}}
     {{else}}
