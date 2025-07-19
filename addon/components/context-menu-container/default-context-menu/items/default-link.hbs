@@ -1,6 +1,12 @@
 <a
   ...attributes
-  class="dropdown-item {{if this.hasSubmenu "dropdown-toggle d-flex justify-content-between align-items-center"}} {{@item.class}} {{if @item.disabled "disabled"}}"
+  class="dropdown-item
+    {{if
+      this.hasSubmenu
+      'dropdown-toggle d-flex justify-content-between align-items-center'
+    }}
+    {{@item.class}}
+    {{if @item.disabled 'disabled'}}"
   href="#"
   {{on "click" this.onClick}}
 >

@@ -13,6 +13,7 @@
       "ember-bootstrap-context-menu/test-support": ["addon-test-support"],
       "ember-bootstrap-context-menu/test-support/*": ["addon-test-support/*"],
       "*": ["types/*"]
-    }
+    },
+    "types": ["ember-source/types"]
   }
 }

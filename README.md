@@ -27,10 +27,10 @@ $enable-negative-margins: true;
 Usage:
 
 ```typescript
-import Controller from '@ember/controller';
-import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
-import ContextMenuManager from 'ember-bootstrap-context-menu/services/context-menu-manager';
+import Controller from "@ember/controller";
+import { action } from "@ember/object";
+import { inject as service } from "@ember/service";
+import ContextMenuManager from "ember-bootstrap-context-menu/services/context-menu-manager";
 
 export default class ApplicationController extends Controller {
   @service declare contextMenuManager: ContextMenuManager;
@@ -40,26 +40,30 @@ export default class ApplicationController extends Controller {
     e.preventDefault();
     e.stopPropagation();
     this.contextMenuManager
-      .show([
-        { id: 'copy', title: 'Copy' },
-        { id: 'cut', title: 'Cut' },
-        { id: 'paste', title: 'Paste' },
-        { id: 'delete', title: 'Delete' },
-      ], e.pageX, e.pageY)
+      .show(
+        [
+          { id: "copy", title: "Copy" },
+          { id: "cut", title: "Cut" },
+          { id: "paste", title: "Paste" },
+          { id: "delete", title: "Delete" },
+        ],
+        e.pageX,
+        e.pageY,
+      )
       .then(({ id }) => {
-        if (id === 'delete') {
+        if (id === "delete") {
           // do delete
           return;
         }
-        if (id === 'copy') {
+        if (id === "copy") {
           // do copy
           return;
         }
-        if (id === 'cut') {
+        if (id === "cut") {
           // do cut
           return;
         }
-        if (id === 'paste') {
+        if (id === "paste") {
           // do paste
           return;
         }
@@ -76,8 +80,8 @@ export default class ApplicationController extends Controller {
 
 ## Compatibility
 
-* `ember-bootstrap@6`
-* `bootstrap@5`
+- `ember-bootstrap@6`
+- `bootstrap@5`
 
 ## Demo
 

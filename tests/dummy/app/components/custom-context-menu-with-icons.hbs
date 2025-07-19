@@ -1,7 +1,9 @@
 <ContextMenuWrapper
   @settings={{@settings}}
   @onMenuItemClick={{@onMenuItemClick}}
-  @onCloseMenu={{@onCloseMenu}} as |Wrapper|>
+  @onCloseMenu={{@onCloseMenu}}
+  as |Wrapper|
+>
   <Wrapper.Dropdown.menu>
     <Wrapper.ContextMenuList as |MenuItems|>
       {{#each @settings.menuItems as |item|}}
@@ -13,7 +15,10 @@
           <MenuItems.Default @item={{item}} as |DefaultMenuItem|>
             <DefaultMenuItem.Link>
               {{#if item.extras.faIcon}}
-                <FaIcon @icon={{item.extras.faIcon.icon}} @fixedWidth={{item.extras.faIcon.fixedWidth}} />
+                <FaIcon
+                  @icon={{item.extras.faIcon.icon}}
+                  @fixedWidth={{item.extras.faIcon.fixedWidth}}
+                />
               {{/if}}
               {{item.title}}
             </DefaultMenuItem.Link>
@@ -21,10 +26,16 @@
               <DefaultMenuItem.List as |DefaultMenuItemList|>
                 <DefaultMenuItemList as |MenuItems|>
                   {{#each item.submenu.items as |subitem|}}
-                    <MenuItems.Default @item={{subitem}} as |DefaultMenuSubItem|>
+                    <MenuItems.Default
+                      @item={{subitem}}
+                      as |DefaultMenuSubItem|
+                    >
                       <DefaultMenuSubItem.Link>
                         {{#if subitem.extras.faIcon}}
-                          <FaIcon @icon={{subitem.extras.faIcon.icon}} @fixedWidth={{subitem.extras.faIcon.fixedWidth}} />
+                          <FaIcon
+                            @icon={{subitem.extras.faIcon.icon}}
+                            @fixedWidth={{subitem.extras.faIcon.fixedWidth}}
+                          />
                         {{/if}}
                         {{subitem.title}}
                       </DefaultMenuSubItem.Link>
@@ -40,13 +51,3 @@
   </Wrapper.Dropdown.menu>
 </ContextMenuWrapper>
 {{yield}}
-
-
-
-
-
-
-
-
-
-
