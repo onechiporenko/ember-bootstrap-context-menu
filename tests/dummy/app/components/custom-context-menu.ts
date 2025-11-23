@@ -4,6 +4,7 @@ import type { MenuItem } from 'ember-bootstrap-context-menu/types/menu-item.inte
 
 export interface CustomContextMenuSignature {
   // The arguments accepted by the component
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   Args: {
     // no-op
   };

@@ -37,12 +37,14 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
       return;
     }
     this.hoverBridge.sub(this);
-    element.addEventListener('mouseenter', this.mouseEnter);
-    element.addEventListener('mouseleave', this.mouseLeave);
+    const me = this.mouseEnter.bind(this);
+    const ml = this.mouseLeave.bind(this);
+    element.addEventListener('mouseenter', me);
+    element.addEventListener('mouseleave', ml);
     return () => {
       this.hoverBridge.unsub(this);
-      element.removeEventListener('mouseenter', this.mouseEnter);
-      element.removeEventListener('mouseleave', this.mouseLeave);
+      element.removeEventListener('mouseenter', me);
+      element.removeEventListener('mouseleave', ml);
     };
   });
 
@@ -66,26 +68,6 @@ export default class ContextMenuContainerDefaultContextMenuItemsDefault extends 
       return;
     }
     this.hoverTimer = runTask(this, () => (this.hovered = false), 300);
-  }
-
-  @action
-  addEventListeners(
-    self: ContextMenuContainerDefaultContextMenuItemsDefault,
-    element: HTMLElement,
-  ): void {
-    self.hoverBridge.sub(self);
-    element.addEventListener('mouseenter', this.mouseEnter);
-    element.addEventListener('mouseleave', this.mouseLeave);
-  }
-
-  @action
-  removeEventListeners(
-    self: ContextMenuContainerDefaultContextMenuItemsDefault,
-    element: HTMLElement,
-  ): void {
-    self.hoverBridge.unsub(self);
-    element.removeEventListener('mouseenter', this.mouseEnter);
-    element.removeEventListener('mouseleave', this.mouseLeave);
   }
 
   forceMouseLeaveIfNeeded(ids: string[]): void {

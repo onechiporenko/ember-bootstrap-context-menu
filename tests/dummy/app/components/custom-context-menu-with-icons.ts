@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 
 export interface CustomContextMenuWithIconsSignature {
   // The arguments accepted by the component
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   Args: {
     // no-op
   };

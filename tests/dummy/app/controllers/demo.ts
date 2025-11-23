@@ -14,8 +14,8 @@ export default class DemoController extends Controller {
   logs: string[] = [];
 
   @action
-  showOneLevelContextMenu(e: PointerEvent): void {
-    this.contextMenuManager
+  async showOneLevelContextMenu(e: PointerEvent): Promise<void> {
+    await this.contextMenuManager
       .show(
         [
           { id: 'header', title: 'Menu Items', type: 'header' },
@@ -39,8 +39,8 @@ export default class DemoController extends Controller {
   }
 
   @action
-  showMenuWithIcons(e: PointerEvent): void {
-    this.contextMenuManager
+  async showMenuWithIcons(e: PointerEvent): Promise<void> {
+    await this.contextMenuManager
       .show(
         [
           {
@@ -124,8 +124,8 @@ export default class DemoController extends Controller {
   }
 
   @action
-  showTwoLevelContextMenu(e: PointerEvent): void {
-    this.contextMenuManager
+  async showTwoLevelContextMenu(e: PointerEvent): Promise<void> {
+    await this.contextMenuManager
       .show(
         [
           { id: 'header', title: 'Menu Items', type: 'header' },
@@ -189,8 +189,8 @@ export default class DemoController extends Controller {
   }
 
   @action
-  showThreeLevelContextMenu(e: PointerEvent): void {
-    this.contextMenuManager
+  async showThreeLevelContextMenu(e: PointerEvent): Promise<void> {
+    await this.contextMenuManager
       .show(
         [
           {
@@ -263,8 +263,8 @@ export default class DemoController extends Controller {
   }
 
   @action
-  showCustomContextMenu(e: PointerEvent): void {
-    this.contextMenuManager
+  async showCustomContextMenu(e: PointerEvent): Promise<void> {
+    await this.contextMenuManager
       .show([], e.pageX, e.pageY, CustomContextMenu)
       .then(({ id }) => this.addLog(`Custom: ${id}`));
     e.stopPropagation();
